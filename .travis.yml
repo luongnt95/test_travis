@@ -1,0 +1,21 @@
+language: python
+python:
+  - "2.7"
+before_install:
+  - sudo add-apt-repository ppa:ethereum/ethereum -y
+  - sudo apt-get update -q
+  - sudo apt-get install software-properties-common -y
+  - sudo apt-get install ethereum -y
+install:
+  - pip install requests
+  - pip install web3
+  - pip install oyente
+before_script:
+  - wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
+  - tar xzf z3-4.5.0.tar.gz
+  - cd z3-z3-4.5.0
+  - python scripts/mk_make.py --python
+  - cd build
+  - make
+  - sudo make install
+script: oyente -s test.sol
