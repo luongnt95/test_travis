@@ -1,30 +1,33 @@
 language: python
 python:
   - "2.7"
+env:
+  global:
+    - Z3_DIR=$HOME/z3-z3-4.5.0
 cache:
   pip: true
   custom_install: true
-  # directories:
-    # - $Z3_DIR=$HOME/z3-z3-4.5.0
-# before_install:
-  # - sudo add-apt-repository ppa:ethereum/ethereum -y
-  # - sudo apt-get update -q
-  # - sudo apt-get install software-properties-common -y
-  # - sudo apt-get install solc -y
-  # - sudo apt-get install ethereum -y
+  directories:
+    - $Z3_DIR
+before_install:
+  - sudo add-apt-repository ppa:ethereum/ethereum -y
+  - sudo apt-get update -q
+  - sudo apt-get install software-properties-common -y
+  - sudo apt-get install solc -y
+  - sudo apt-get install ethereum -y
 install:
   - pip install requests
-  # - pip install web3
-  # - pip install oyente
-# before_script:
-  # - cd $HOME
-  # - wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
-  # - tar xzf z3-4.5.0.tar.gz
-  # - cd z3-z3-4.5.0
-  # - python scripts/mk_make.py --python
-  # - cd build
-  # - make
-  # - sudo make install
-# script:
-  # - cd $TRAVIS_BUILD_DIR
-  # - oyente -s test.sol
+  - pip install web3
+  - pip install oyente
+before_script:
+  - cd $HOME
+  - wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
+  - tar xzf z3-4.5.0.tar.gz
+  - cd z3-z3-4.5.0
+  - python scripts/mk_make.py --python
+  - cd build
+  - make
+  - sudo make install
+script:
+  - cd $TRAVIS_BUILD_DIR
+  - oyente -s test.sol
