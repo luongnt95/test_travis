@@ -1,8 +1,11 @@
 language: python
 python:
   - "2.7"
-sudo: false
-cache: pip
+cache:
+  pip: true
+  custom_install: true
+  # directories:
+    # - $Z3_DIR=$HOME/z3-z3-4.5.0
 # before_install:
   # - sudo add-apt-repository ppa:ethereum/ethereum -y
   # - sudo apt-get update -q
@@ -11,9 +14,10 @@ cache: pip
   # - sudo apt-get install ethereum -y
 install:
   - pip install requests
-  - pip install web3
-  - pip install oyente
+  # - pip install web3
+  # - pip install oyente
 # before_script:
+  # - cd $HOME
   # - wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
   # - tar xzf z3-4.5.0.tar.gz
   # - cd z3-z3-4.5.0
@@ -21,7 +25,6 @@ install:
   # - cd build
   # - make
   # - sudo make install
+# script:
   # - cd $TRAVIS_BUILD_DIR
-# script: oyente -s test.sol
-script: ls
-
+  # - oyente -s test.sol
