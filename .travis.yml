@@ -3,7 +3,8 @@ python:
   - "2.7"
 env:
   global:
-    - Z3_DIR=$HOME/virtualenv/python2.7.13/z3
+    # - Z3_DIR=$HOME/virtualenv/python2.7.13/z3
+    - Z3_DIR=~/z3
 cache:
   pip: true
   custom_install: true
@@ -21,14 +22,17 @@ install:
   - pip install oyente
 before_script:
   - cd $HOME
-  - if [[ ! -d "$Z3_DIR" ]]; then
-      wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
-      tar xzf z3-4.5.0.tar.gz
-      cd z3-z3-4.5.0
-      python scripts/mk_make.py --python
-      cd build
-      make
-      sudo make install
+  - if [[ ! -e "$Z3_DIR/build/z3" ]]; then
+      rm -rf $Z3_DIR;
+      mkdir -p $Z3_DIR;
+      cd $Z3_DIR;
+      wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz;
+      tar xzf z3-4.5.0.tar.gz;
+      cd z3-z3-4.5.0;
+      python scripts/mk_make.py --python;
+      cd build;
+      make;
+      sudo make install;
     else echo "using z3 from cache"; fi
 script:
   - cd $TRAVIS_BUILD_DIR
