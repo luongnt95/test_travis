@@ -21,15 +21,15 @@ install:
   - pip install oyente
 before_script:
   - cd $HOME
-  - wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
-  - tar xzf z3-4.5.0.tar.gz
-  - cd z3-z3-4.5.0
-  - python scripts/mk_make.py --python
-  - cd build
-  - make
-  - sudo make install
-  - cd $HOME/virtualenv/python2.7.13
-  - ls
+  - if [[ ! -e "$Z3_DIR" ]]; then
+      wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz
+      tar xzf z3-4.5.0.tar.gz
+      cd z3-z3-4.5.0
+      python scripts/mk_make.py --python
+      cd build
+      make
+      sudo make install
+  else echo "using z3 from cache"; fi
 script:
   - cd $TRAVIS_BUILD_DIR
   - oyente -s test.sol
