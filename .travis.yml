@@ -19,4 +19,5 @@ before_script:
   - cd build
   - make
   - sudo make install
+  - cd
 script: oyente -s test.sol
