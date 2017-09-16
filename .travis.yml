@@ -29,7 +29,7 @@ before_script:
       cd build
       make
       sudo make install
-  else echo "using z3 from cache"; fi
+    else echo "using z3 from cache"; fi
 script:
   - cd $TRAVIS_BUILD_DIR
   - oyente -s test.sol
