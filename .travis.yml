@@ -22,7 +22,7 @@ install:
   - pip install oyente
 before_script:
   - cd $HOME
-  - if [[ ! -e "$Z3_DIR/build/z3" ]]; then
+  - if [[ ! -e "$Z3_DIR/z3-z3-4.5.0/build/z3" ]]; then
       rm -rf $Z3_DIR;
       mkdir -p $Z3_DIR;
       cd $Z3_DIR;
