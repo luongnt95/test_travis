@@ -31,3 +31,4 @@ before_script:
 script:
   - cd $TRAVIS_BUILD_DIR
   - oyente -s test.sol
+  - ls
