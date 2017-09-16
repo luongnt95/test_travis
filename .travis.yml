@@ -23,4 +23,5 @@ install:
   # - sudo make install
   # - cd $TRAVIS_BUILD_DIR
 # script: oyente -s test.sol
+script: ls
 
