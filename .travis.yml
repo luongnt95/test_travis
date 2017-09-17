@@ -4,39 +4,17 @@ python:
 sudo: required
 env:
   global:
-    # - Z3_DIR=$HOME/virtualenv/python2.7.13/z3
     - Z3_DIR=$HOME/virtualenv/python2.7.13/test
 cache:
-  # pip: true
-  # custom_install: true
   directories:
     - $Z3_DIR
-# before_install:
-  # - sudo add-apt-repository ppa:ethereum/ethereum -y
-  # - sudo apt-get update -q
-  # - sudo apt-get install software-properties-common -y
-  # - sudo apt-get install solc -y
-  # - sudo apt-get install ethereum -y
-# install:
-  # - pip install requests
-  # - pip install web3
-  # - pip install oyente
 before_script:
   - if [[ ! -f "$Z3_DIR/demo.txt" ]]; then
       mkdir -p $Z3_DIR;
       touch $Z3_DIR/demo.txt;
-      # cd;
-      # wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz;
-      # tar xzf z3-4.5.0.tar.gz;
-      # cd z3-z3-4.5.0;
-      # python scripts/mk_make.py --python;
-      # cd build;
-      # make;
-      # sudo make install;
     else echo "using z3 from cache"; fi
   - ls $HOME/virtualenv/python2.7.13
   - ls $Z3_DIR
-  # - ls $HOME/virtualenv/python2.7.13/z3
 script:
   - cd $TRAVIS_BUILD_DIR
   - oyente -s test.sol
