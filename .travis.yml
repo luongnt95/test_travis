@@ -23,8 +23,8 @@ cache:
   # - pip install oyente
 before_script:
   - if [[ ! -f "$Z3_DIR/demo.txt" ]]; then
-      mkdir -p $Z3_DIR
-      touch $Z3_DIR/demo.txt
+      mkdir -p $Z3_DIR;
+      touch $Z3_DIR/demo.txt;
       # cd;
       # wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz;
       # tar xzf z3-4.5.0.tar.gz;
