@@ -22,7 +22,7 @@ install:
   - pip install web3
   - pip install oyente
 before_script:
-  - if [[ ! -f $Z3_DIR/z3.py ]]; then
+  - if [[ ! -f "$Z3_DIR/z3.py" ]]; then
       cd
       wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz;
       tar xzf z3-4.5.0.tar.gz;
