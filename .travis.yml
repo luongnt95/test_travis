@@ -16,3 +16,4 @@ before_script:
   - ls $Z3_DIR
 script:
   - cd $TRAVIS_BUILD_DIR
+  - ls
