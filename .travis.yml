@@ -5,7 +5,6 @@ sudo: required
 env:
   global:
     - Z3_DIR=$HOME/virtualenv/python2.7.13/z3
-    # - Z3_DIR=~/z3
 cache:
   pip: true
   custom_install: true
