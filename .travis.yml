@@ -12,8 +12,5 @@ before_script:
       mkdir -p $Z3_DIR;
       touch $Z3_DIR/demo.txt;
     else echo "using z3 from cache"; fi
-  - ls $HOME/virtualenv/python2.7.13
-  - ls $Z3_DIR
 script:
   - cd $TRAVIS_BUILD_DIR
-  - ls
