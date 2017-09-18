@@ -3,12 +3,12 @@ python:
   - "2.7"
 env:
   global:
-    - Z3_DIR=~/virtualenv/python2.7/lib/python2.7/site-packages
+    - Z3_DIR=~/virtualenv/python2.7/lib/python2.7/site-packages/z3
 cache:
   pip: true
   custom_install: true
   directories:
-    - $Z3_DIR
+    - ~/virtualenv/python2.7/lib
 before_install:
   - sudo add-apt-repository ppa:ethereum/ethereum -y
   - sudo apt-get update -q
@@ -20,7 +20,7 @@ install:
   - pip install web3
   - pip install oyente
 before_script:
-  - if [[ ! -f "$Z3_DIR/z3/__init__.py" ]]; then
+  - if [[ ! -f "$Z3_DIR/__init__.py" ]]; then
       cd;
       wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz;
       tar xzf z3-4.5.0.tar.gz;
@@ -30,7 +30,7 @@ before_script:
       make;
       sudo make install;
     else echo "using z3 from cache"; fi
-  - ls $Z3_DIR/z3
+  - ls $Z3_DIR
 script:
   - cd $TRAVIS_BUILD_DIR
   - oyente -s test.sol
