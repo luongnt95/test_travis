@@ -18,8 +18,8 @@ install:
   - pip install web3
   - pip install oyente
 before_script:
-  - cd
   - if [[ ! -f "$Z3_DIR/__init__.py" ]]; then
+      cd;
       wget https://github.com/Z3Prover/z3/archive/z3-4.5.0.tar.gz;
       tar xzf z3-4.5.0.tar.gz;
       cd z3-z3-4.5.0;
@@ -28,7 +28,8 @@ before_script:
       make;
       sudo make install;
     else echo "using z3 from cache"; fi
-  - ln -f -s ../libz3.so python
+  - cd $Z3_DIR/lib
+  - ln -s libz3.so ../../../../libz3.so
   - ls $Z3_DIR
 script:
   - cd $TRAVIS_BUILD_DIR
