@@ -1,5 +1,5 @@
 contract Test {
   function test(uint a) {
-    assert(a > 2000);
+    assert(a > 3000);
   }
 }
