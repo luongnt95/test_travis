@@ -1,12 +1,15 @@
 language: python
 python:
   - "2.7"
+sudo: required
 env:
   global:
     - Z3_DIR=~/virtualenv/python2.7/lib/python2.7/site-packages/z3
 cache:
+  pip: true
+  custom_install: true
   directories:
-    - $Z3_DIR
+    - ~/virtualenv/python2.7/lib
 before_install:
   - sudo add-apt-repository ppa:ethereum/ethereum -y
   - sudo apt-get update -q
@@ -28,9 +31,6 @@ before_script:
       make;
       sudo make install;
     else echo "using z3 from cache"; fi
-  - cd $Z3_DIR/lib
-  - ln -s libz3.so ../../../../libz3.so
-  - ls $Z3_DIR
 script:
   - cd $TRAVIS_BUILD_DIR
   - oyente -s test.sol
