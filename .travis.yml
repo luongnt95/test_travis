@@ -12,8 +12,7 @@ cache:
 install:
   - pip install requests
   - pip install web3
-  - pip uninstall oyente
-  - y
+  - pip uninstall oyente -y
   - pip install oyente
 before_script:
   - if [[ ! -f "$Z3_DIR/__init__.py" ]]; then
