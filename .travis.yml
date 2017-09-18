@@ -9,12 +9,6 @@ cache:
   custom_install: true
   directories:
     - ~/virtualenv/python2.7/lib
-before_install:
-  - sudo add-apt-repository ppa:ethereum/ethereum -y
-  - sudo apt-get update -q
-  - sudo apt-get install software-properties-common -y
-  - sudo apt-get install solc -y
-  - sudo apt-get install ethereum -y
 install:
   - pip install requests
   - pip install web3
