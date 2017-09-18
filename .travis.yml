@@ -1,7 +1,6 @@
 language: python
 python:
   - "2.7"
-sudo: required
 env:
   global:
     - Z3_DIR=~/virtualenv/python2.7/lib/python2.7/site-packages/z3
@@ -19,6 +18,7 @@ before_install:
 install:
   - pip install requests
   - pip install web3
+  - pip uninstall oyente
   - pip install oyente
 before_script:
   - if [[ ! -f "$Z3_DIR/__init__.py" ]]; then
