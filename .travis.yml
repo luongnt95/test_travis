@@ -6,7 +6,7 @@ env:
     - Z3_DIR=~/virtualenv/python2.7/lib/python2.7/site-packages/z3
 cache:
   directories:
-    - ~/virtualenv/python2.7/lib
+    - $Z3_DIR
 before_install:
   - sudo add-apt-repository ppa:ethereum/ethereum -y
   - sudo apt-get update -q
